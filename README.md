@@ -16,4 +16,4 @@ Jokainen Stop class sisältää yhden pysäkin nimen, pysäkin yhteydet (linjast
 Kun pysäkki löytyy sen aika ja mitä pysäkkejä käytettiin lähetetään edelliselle pysäkille joka vertaa tuloksia ja lähettää takaisin vain lyhkäisimmän reitin. Jokainen pysäkki tekee näin kunnes tieto palaa alkuperäiselle pysäkille joka palauttaa kaiken parhaimman reitin.
 Lopuksi ohjelma rakentaa string vastauksen ja palauttaa sen sivustolle.
 
-Huomioitavaa ohjelmassa on että se olettaa .json tiedoston olevan ehjänä ja pysäkkien olevan A-Z. Tämä ratkaisu ei skaalaa hyvin kun on monta pysäkkiä, mutta tämnöiseen käyttöön on sopiva.
+Huomioitavaa ohjelmassa on että se olettaa .json tiedoston olevan ehjänä ja pysäkkien olevan A-Z. Myös on oletettu että linjat kulkevat molempiin suuntiin vaikka ei erikseen mainittu, koska käytännössä ne yleensä kulkee niin. Tämä ratkaisu ei skaalaa hyvin kun on monta pysäkkiä, mutta tämnöiseen käyttöön on sopiva.
