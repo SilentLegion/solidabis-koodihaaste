@@ -51,8 +51,8 @@ def get_route_between_stops(a, b):
 	routes = list(data['linjastot'].keys()) #Create list of route names
 	for r in range(len(routes)): #For each route "r"
 		for n in range(len(data['linjastot'][routes[r]])-1): #For each stop "n" in the route except the last
-			if a == data['linjastot'][routes[r]][n] and b == data['linjastot'][routes[r]][n+1]:
-				return routes[r]
+			if a == data['linjastot'][routes[r]][n] and b == data['linjastot'][routes[r]][n+1]: #if stops a and b match the stops n and n+1 in the route
+				return routes[r] #return the name of the route
 			elif b == data['linjastot'][routes[r]][n] and a == data['linjastot'][routes[r]][n+1]:
 				return routes[r]
 	
@@ -100,7 +100,8 @@ populate_stops_with_connections() #Unpack and interpret the .json file once when
 
 app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
-def home(): #Main page for website
+def home():
+	"""Main page for the site, also runs the input and output of data"""
 	start = ''
 	finish = ''
 	if request.method == 'POST':
@@ -117,13 +118,13 @@ def home(): #Main page for website
 		if finish not in data['pysakit']:
 			raise
 	except: #If input is not valid the html page is rendered with an error message
-		if len(start) == 0 or len(finish) == 0:
+		if len(start) == 0 or len(finish) == 0: #If one of the inputs is empty
 			response = 'Täytä kentät'
 			return render_template("home.html", output=response)
-		response = 'Huonot pysäkit, kuuluu olla oikeita pysäkkejä.'
+		response = 'Huonot pysäkit, kuuluu olla oikeita pysäkkejä.' #If inputs contain something but are otherwise invalid
 		return render_template("home.html", output=response, colour='Red')
 	try: #attempt to get the route data for the inputed stops and output it
-		route, time, route_names = get_route(start, finish)
+		route, time, route_names = get_route(start, finish) #Fetch the best route between start and finish
 		if time == 0 or route == []: #If there is an issue with generating an output this raises an error
 			raise Exception('')
 		response = 'Reitti alkaa pysäkistä {} linjalla {}, '.format(route[0], route_names[0])
