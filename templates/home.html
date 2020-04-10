@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+   <script type=text/javascript> $(function() { $("#search").click(function (event) { $.getJSON('/Function', { },
+   function(data) { }); return false; }); }); </script> 
+  <title>Reittihaku</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Matkahaku</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="/">Reittihaku</a></li>
+        <li><a href="/kartta">Kartta</a></li>
+      </ul><br>
+    </div>
+
+    <div class="col-sm-4">
+      <h2>Reittihaku</h2>
+	  <p>Anna pysäkkien kirjainmet</p>
+	 <form action = "/" method = "POST" class="form-group">
+         <p><input type = "text" name = "start"  class="form-control" placeholder="Lähtöpysäkki"/></p>
+         <p><input type = "text" name = "end" class="form-control" placeholder="Päätepysäkki"/></p>
+         <p><input type = "submit" value = "Hae"  /></p>
+      </form>
+	  <p style="color:{{ colour }};">{{ output }}</p>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+<div >
+<p>Sivun on tehnyt Juha Tuomela Solidabis Koodihaastetta varten</p>
+</div>
+</footer>
+
+</body>
+</html>
